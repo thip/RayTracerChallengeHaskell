@@ -1,4 +1,4 @@
-module ProjectileSimulator where
+module Main ( main ) where
 
 import Tuples
 import Canvas
