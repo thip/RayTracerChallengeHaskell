@@ -1,6 +1,7 @@
 module TuplesSpec where
 
 import Test.Hspec
+import SpecHelpers
 import Tuples
 
 main :: IO ()
@@ -177,7 +178,3 @@ main = hspec $ do
 
         it "is vetror 1 -2 1" $ do
           v1 `cross` v2 `shouldBe` vector 1 (-2) 1
-
-
-isApproximately :: Float -> Float -> Bool
-isApproximately a b =  0.000001 > abs(a - b)
