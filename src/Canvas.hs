@@ -1,4 +1,13 @@
-module Canvas where
+module Canvas (
+  newCanvas,
+  newCanvasWithColor,
+  width,
+  height,
+  pixels,
+  writePixel,
+  pixelAt,
+  constructPpm
+) where
 
 import Data.Array
 import Colors

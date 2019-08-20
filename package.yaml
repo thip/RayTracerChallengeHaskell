@@ -1,8 +1,22 @@
 name: RayTracer
+
+library:
+  source-dirs: src
+
 executables:
   projectileSimulator:
     main: Main.hs
-    source-dirs: src
+    source-dirs:
+      - app/projectileSimulator
+    dependencies:
+      - RayTracer
+
+tests:
+  RayTracer-tests:
+    main: Spec.hs
+    source-dirs: spec
+    dependencies:
+      - RayTracer
 
 dependencies:
   - base

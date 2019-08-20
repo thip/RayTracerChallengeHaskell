@@ -1,12 +1,12 @@
-module ColorsSpec where
+module ColorsSpec (spec) where
 
 import Test.Hspec
 import SpecHelpers
 import Tuples
 import Colors
 
-main :: IO ()
-main = hspec $ do
+spec :: Spec
+spec = do
   describe "A Color" $ do
     context "created with red=4.2, green=-4.2, blue=3.1" $ do
       let c = Color (-0.5) (0.4) (1.7)

@@ -1,11 +1,11 @@
-module TuplesSpec where
+module TuplesSpec (spec) where
 
 import Test.Hspec
 import SpecHelpers
 import Tuples
 
-main :: IO ()
-main = hspec $ do
+spec :: Spec
+spec = do
   describe "A tuple" $ do
     context "created with x=4.2, y=-4.2, z=3.1, w=1.0" $ do
       let t = Tuple (4.3) (-4.2) (3.1) (1.0)

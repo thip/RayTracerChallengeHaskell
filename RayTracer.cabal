@@ -4,23 +4,56 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: ed5d5e513005e11c07c0c407770f5e5714123603c4530f0f12cfa484320a1c5d
+-- hash: de0599155085388c280ccdc52a0879e03e9001f679777dcd504eaaa00bef2659
 
 name:           RayTracer
 version:        0.0.0
 build-type:     Simple
 
-executable projectileSimulator
-  main-is: Main.hs
-  other-modules:
+library
+  exposed-modules:
       Canvas
       Colors
+      ProjectileSimulator
       Tuples
+  other-modules:
       Paths_RayTracer
   hs-source-dirs:
       src
   build-depends:
       array
+    , base
+    , hspec
+  default-language: Haskell2010
+
+executable projectileSimulator
+  main-is: Main.hs
+  other-modules:
+      Paths_RayTracer
+  hs-source-dirs:
+      app/projectileSimulator
+  build-depends:
+      RayTracer
+    , array
+    , base
+    , hspec
+  default-language: Haskell2010
+
+test-suite RayTracer-tests
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      CanvasSpec
+      ColorsSpec
+      ProjectileSimulatorSpec
+      SpecHelpers
+      TuplesSpec
+      Paths_RayTracer
+  hs-source-dirs:
+      spec
+  build-depends:
+      RayTracer
+    , array
     , base
     , hspec
   default-language: Haskell2010

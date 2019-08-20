@@ -4,8 +4,8 @@ import Test.Hspec
 import Tuples
 import ProjectileSimulator
 
-main :: IO ()
-main = hspec $ do
+spec :: Spec
+spec = do
   describe "tick" $ do 
     context "in an environment with no wind or gravity and a moving projectile" $ do
       let environment = Environment (vector 0 0 0) (vector 0 0 0)

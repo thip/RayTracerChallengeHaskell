@@ -1,11 +1,11 @@
-module CanvasSpec where
+module CanvasSpec (spec) where
 
 import Test.Hspec
 import Canvas
 import Colors
 
-main :: IO ()
-main = hspec $ do
+spec :: Spec
+spec = do
   describe "Creating a canvas" $ do
     let canvas = newCanvas 10 20
 
