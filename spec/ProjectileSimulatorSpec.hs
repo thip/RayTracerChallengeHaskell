@@ -30,13 +30,13 @@ spec = do
 
   describe "isInFlight" $ do
     context "when the projectile is above the ground" $ do
-      it "returns false" $ do
+      it "returns true" $ do
         isInFlight (Projectile (point 1 2 3) (vector 0 0 0)) `shouldBe` True
 
     context "when the projectile is on the ground" $ do
-          it "returns true" $ do
+          it "returns false" $ do
             isInFlight (Projectile (point 0 0 0) (vector 0 0 0)) `shouldBe` False
 
     context "when the projectile is below the ground" $ do
-          it "returns true" $ do
+          it "returns false" $ do
             isInFlight (Projectile (point 0 (-1) 0) (vector 0 0 0)) `shouldBe` False

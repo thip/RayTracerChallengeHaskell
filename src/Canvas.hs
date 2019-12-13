@@ -46,9 +46,11 @@ constructPpm canvas = unlines $ (constructPpmHeaderLines canvas) ++ (constructPp
 constructPpmHeaderLines :: Canvas -> [String]
 constructPpmHeaderLines canvas = ["P3", show (width canvas) ++ " " ++ show (height canvas), "255"]
 
--- todo: tidy this up
 constructPpmDataLines :: Canvas -> [String]
-constructPpmDataLines canvas = map unwords $ wrapRowsAt 17 $ map words $ map unwords ((pixels canvas) `toRowsWithWidth` (width canvas))
+constructPpmDataLines canvas = wrapLines 17 ((pixels canvas) `toRowsWithWidth` (width canvas))
+
+wrapLines :: Int -> [[String]] -> [String]
+wrapLines maxLineLength lines = map unwords $ wrapRowsAt maxLineLength $ map words $ map unwords lines
 
 toRowsWithWidth :: [Color] -> Int -> [[String]]
 [] `toRowsWithWidth` _ = []
@@ -61,7 +63,6 @@ wrapRowsAt n (l:rest) = (splitListAt n l) ++ wrapRowsAt n rest
 splitListAt :: Int -> [a] -> [[a]]
 splitListAt _ [] = []
 splitListAt n list = [take n list ] ++ splitListAt n (drop n list)
-
 
 toColorString :: Color -> String
 toColorString (Color r g b) = unwords $ map toComponentString [r,g,b]
