@@ -23,6 +23,38 @@ spec = do
         m !? [3,0] `shouldBe` 13.5
         m !? [3,2] `shouldBe` 15.5
 
+    context "when multiplied by other 4x4 matrices" $ do
+      let m1 = Matrix4 (V4 1 2 3 4)
+                       (V4 5 6 7 8)
+                       (V4 9 8 7 6)
+                       (V4 5 4 3 2)
+
+      let m2 = Matrix4 (V4 (-2) 1 2 3)
+                       (V4 3 2 1 (-1))
+                       (V4 4 3 6 5)
+                       (V4 1 2 7 8)
+
+      let m1TimesM2 = Matrix4 (V4 20 22 50 48)
+                              (V4 44 54 114 108)
+                              (V4 40 58 110 102)
+                              (V4 16 26 46 42)
+
+      it "should produce the correct result" $ do
+        m1 * m2 `shouldBe` m1TimesM2
+
+    context "when multiplied by tuples" $ do
+      let matrix = Matrix4 (V4 1 2 3 4)
+                           (V4 2 4 4 2)
+                           (V4 8 6 4 1)
+                           (V4 0 0 0 1)
+
+      let tuple = Tuple 1 2 3 1
+
+      let matrixTimesTuple = Tuple 18 24 33 1
+
+      it "should produce the correct result" $ do
+        matrix *|| tuple `shouldBe` matrixTimesTuple
+
 
   describe "3x3 Matrices" $ do
     context "when constructed" $ do
