@@ -176,5 +176,5 @@ spec = do
         let v1 = vector 2 3 4
         let v2 = vector 1 2 3
 
-        it "is vetror 1 -2 1" $ do
+        it "is vector 1 -2 1" $ do
           v1 `cross` v2 `shouldBe` vector 1 (-2) 1

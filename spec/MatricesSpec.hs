@@ -55,6 +55,27 @@ spec = do
       it "should produce the correct result" $ do
         matrix *|| tuple `shouldBe` matrixTimesTuple
 
+    context "identity matrix" $ do
+      it "should behave like an idendity matrix :)" $ do
+        identity4 *|| Tuple 1 2 3 4 `shouldBe` Tuple 1 2 3 4
+
+    context "transpose" $ do
+      let matrix = Matrix4 (V4 0 9 3 0)
+                           (V4 9 8 0 8)
+                           (V4 1 8 5 3)
+                           (V4 0 0 5 8)
+
+      let transposed = Matrix4 (V4 0 9 1 0)
+                               (V4 9 8 8 0)
+                               (V4 3 0 5 5)
+                               (V4 0 8 3 8)
+
+      it "should swap the rows and columns" $ do
+        transpose matrix `shouldBe` transposed
+
+      it "should transpose the identity matrix into the identity matrix" $ do
+        transpose identity4 `shouldBe` identity4
+
 
   describe "3x3 Matrices" $ do
     context "when constructed" $ do
