@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 9c0980f30dd1baafe9c8b33603107434a37c43e65c0b172d173a282f2162e2bb
+-- hash: 0304858ced021dedba2f0e8d71b13cc64ddf7366acb00087349b0a70c15b970d
 
 name:           RayTracer
 version:        0.0.0
@@ -16,6 +16,7 @@ library
       Colors
       Matrices
       ProjectileSimulator
+      Transformations
       Tuples
   other-modules:
       Paths_RayTracer
@@ -46,9 +47,12 @@ test-suite RayTracer-tests
   other-modules:
       CanvasSpec
       ColorsSpec
-      MatricesSpec
+      Matrices2Spec
+      Matrices3Spec
+      Matrices4Spec
       ProjectileSimulatorSpec
       SpecHelpers
+      TransformationsSpec
       TuplesSpec
       Paths_RayTracer
   hs-source-dirs:
